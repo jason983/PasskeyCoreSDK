@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="https://training-api.passkey.com/axis/services/PasskeyBridge" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="https://training-api.passkey.com/axis/services/PasskeyBridge" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="https://training-api.passkey.com/axis/services/PasskeyBridge" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types />
+  <wsdl:message name="modifyRequest">
+    <wsdl:part name="xmlString" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cancelRequest">
+    <wsdl:part name="xmlString" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="setRequestResponse" />
+  <wsdl:message name="setRequestRequest">
+    <wsdl:part name="req" type="xsd:anyType" />
+  </wsdl:message>
+  <wsdl:message name="cancelResponse">
+    <wsdl:part name="cancelResponse" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="processMessageResponse">
+    <wsdl:part name="processMessageResponse" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getRequest">
+    <wsdl:part name="xmlString" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="modifyResponse">
+    <wsdl:part name="modifyResponse" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="createResponse">
+    <wsdl:part name="createResponse" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getResponse">
+    <wsdl:part name="getResponse" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="processMessageRequest">
+    <wsdl:part name="xmlString" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="createRequest">
+    <wsdl:part name="xmlString" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="BridgeService">
+    <wsdl:operation name="get" parameterOrder="xmlString">
+      <wsdl:input name="getRequest" message="impl:getRequest" />
+      <wsdl:output name="getResponse" message="impl:getResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="create" parameterOrder="xmlString">
+      <wsdl:input name="createRequest" message="impl:createRequest" />
+      <wsdl:output name="createResponse" message="impl:createResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cancel" parameterOrder="xmlString">
+      <wsdl:input name="cancelRequest" message="impl:cancelRequest" />
+      <wsdl:output name="cancelResponse" message="impl:cancelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modify" parameterOrder="xmlString">
+      <wsdl:input name="modifyRequest" message="impl:modifyRequest" />
+      <wsdl:output name="modifyResponse" message="impl:modifyResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setRequest" parameterOrder="req">
+      <wsdl:input name="setRequestRequest" message="impl:setRequestRequest" />
+      <wsdl:output name="setRequestResponse" message="impl:setRequestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="processMessage" parameterOrder="xmlString">
+      <wsdl:input name="processMessageRequest" message="impl:processMessageRequest" />
+      <wsdl:output name="processMessageResponse" message="impl:processMessageResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PasskeyBridgeSoapBinding" type="impl:BridgeService">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="get">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRequest">
+        <wsdlsoap:body use="encoded" namespace="http://webservice.web.api.passkey.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getResponse">
+        <wsdlsoap:body use="encoded" namespace="https://training-api.passkey.com/axis/services/PasskeyBridge" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="create">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="createRequest">
+        <wsdlsoap:body use="encoded" namespace="http://webservice.web.api.passkey.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="createResponse">
+        <wsdlsoap:body use="encoded" namespace="https://training-api.passkey.com/axis/services/PasskeyBridge" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancel">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="cancelRequest">
+        <wsdlsoap:body use="encoded" namespace="http://webservice.web.api.passkey.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="cancelResponse">
+        <wsdlsoap:body use="encoded" namespace="https://training-api.passkey.com/axis/services/PasskeyBridge" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modify">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="modifyRequest">
+        <wsdlsoap:body use="encoded" namespace="http://webservice.web.api.passkey.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="modifyResponse">
+        <wsdlsoap:body use="encoded" namespace="https://training-api.passkey.com/axis/services/PasskeyBridge" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setRequest">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="setRequestRequest">
+        <wsdlsoap:body use="encoded" namespace="http://webservice.web.api.passkey.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="setRequestResponse">
+        <wsdlsoap:body use="encoded" namespace="https://training-api.passkey.com/axis/services/PasskeyBridge" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="processMessage">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="processMessageRequest">
+        <wsdlsoap:body use="encoded" namespace="http://webservice.web.api.passkey.com" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="processMessageResponse">
+        <wsdlsoap:body use="encoded" namespace="https://training-api.passkey.com/axis/services/PasskeyBridge" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BridgeServiceService">
+    <wsdl:port name="PasskeyBridge" binding="impl:PasskeyBridgeSoapBinding">
+      <wsdlsoap:address location="https://training-api.passkey.com/axis/services/PasskeyBridge" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

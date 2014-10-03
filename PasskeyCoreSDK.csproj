@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{624C56EA-16B6-4926-82CC-2CD855C28846}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PasskeyCoreSDK</RootNamespace>
+    <AssemblyName>PasskeyCoreSDK</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domain\BillingPhoneNumber.cs" />
+    <Compile Include="Domain\BridgeId.cs" />
+    <Compile Include="Domain\CancelBridgeRequest.cs" />
+    <Compile Include="Domain\CancelBridgeRequestData.cs" />
+    <Compile Include="Domain\CreateBridgeRequest.cs" />
+    <Compile Include="Domain\GetBridgeRequest.cs" />
+    <Compile Include="Domain\GetBridgeRequestData.cs" />
+    <Compile Include="Domain\GuestCount.cs" />
+    <Compile Include="Domain\GuestCounts.cs" />
+    <Compile Include="Domain\HotelReservation.cs" />
+    <Compile Include="Domain\HotelReservationIDs.cs" />
+    <Compile Include="Domain\HotelReservationContainer.cs" />
+    <Compile Include="Domain\HotelReservations.cs" />
+    <Compile Include="Domain\InfoCustomFields.cs" />
+    <Compile Include="Domain\InfoTimeSpan.cs" />
+    <Compile Include="Domain\InfoTimeSpanStartDateWindow.cs" />
+    <Compile Include="Domain\ModifyBridgeRequest.cs" />
+    <Compile Include="Domain\CreateBridgeRequestData.cs" />
+    <Compile Include="Domain\ModifyBridgeRequestData.cs" />
+    <Compile Include="Domain\PasskeyMessage.cs" />
+    <Compile Include="Domain\PasskeyResponse.cs" />
+    <Compile Include="Domain\PasskeySecurity.cs" />
+    <Compile Include="Domain\PasskeySecurityLogin.cs" />
+    <Compile Include="Domain\PaymentCard.cs" />
+    <Compile Include="Domain\PaymentCardAddress.cs" />
+    <Compile Include="Domain\PaymentCardAddressCountryName.cs" />
+    <Compile Include="Domain\PaymentGuaranteeAccepted.cs" />
+    <Compile Include="Domain\PaymentGuaranteesAccepted.cs" />
+    <Compile Include="Domain\PaymentInfoGuarantee.cs" />
+    <Compile Include="Domain\Profile.cs" />
+    <Compile Include="Domain\ProfileCompanyInfo.cs" />
+    <Compile Include="Domain\ProfileCustomer.cs" />
+    <Compile Include="Domain\ProfileCustomerAddress.cs" />
+    <Compile Include="Domain\ProfileCustomerAddressCountryName.cs" />
+    <Compile Include="Domain\ProfileCustomerEmployeeInfo.cs" />
+    <Compile Include="Domain\ProfileCustomerPersonName.cs" />
+    <Compile Include="Domain\ProfileCustomerTelephone.cs" />
+    <Compile Include="Domain\ProfileHotelPreference.cs" />
+    <Compile Include="Domain\ProfileHotelPreferencePhysChallFeaturePreference.cs" />
+    <Compile Include="Domain\ProfileInfo.cs" />
+    <Compile Include="Domain\ProfilePreferenceCollection.cs" />
+    <Compile Include="Domain\ProfilePreferenceCollections.cs" />
+    <Compile Include="Domain\Profiles.cs" />
+    <Compile Include="Domain\ReservationGlobalInformation.cs" />
+    <Compile Include="Domain\ReservationGuest.cs" />
+    <Compile Include="Domain\ReservationGuestRPHs.cs" />
+    <Compile Include="Domain\RoomStay.cs" />
+    <Compile Include="Domain\RoomStays.cs" />
+    <Compile Include="Domain\RoomType.cs" />
+    <Compile Include="Domain\RoomTypes.cs" />
+    <Compile Include="Domain\TPAExtensions.cs" />
+    <Compile Include="Domain\TPAExtensionsPKInfo.cs" />
+    <Compile Include="Domain\UniqueId.cs" />
+    <Compile Include="Helpers\Utf8StringWriter.cs" />
+    <Compile Include="Helpers\XmlSerializationHelper.cs" />
+    <Compile Include="PasskeyBridge\PasskeyBridgeServiceWrapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PasskeyBridgeWebReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://training-api.passkey.com/axis/services/PasskeyBridge%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PasskeyBridgeWebReference\</RelPath>
+      <UpdateFromURL>https://training-api.passkey.com/axis/services/PasskeyBridge%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PasskeyCoreSDK_PasskeyBridge_BridgeServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\PasskeyBridgeWebReference\PasskeyBridge.wsdl" />
+    <None Include="Web References\PasskeyBridgeWebReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
