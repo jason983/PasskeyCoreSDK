@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("PasskeyCoreSDK")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A C#.Net wrapper for Passkey's RegLink Open API")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("PasskeyCoreSDK")]
