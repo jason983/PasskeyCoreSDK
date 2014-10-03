@@ -15,6 +15,7 @@ namespace PasskeyCoreSDK.PasskeyBridge
     {
         private BridgeServiceService service;
         private PasskeySecurity passkeySecurity;
+        private XmlSerializerNamespaces xmlSerializerNamespaces;
 
         public PasskeyBridgeServiceWrapper(string webserviceUrl, uint partnerId, string userName, string password)
         {
@@ -25,6 +26,9 @@ namespace PasskeyCoreSDK.PasskeyBridge
             }
 
             this.passkeySecurity = CreatePasskeySecurity(partnerId, userName, password);
+
+            this.xmlSerializerNamespaces = new XmlSerializerNamespaces();
+            this.xmlSerializerNamespaces.Add("ota", "http://www.opentravel.org/OTA/2002/11");
         }
 
         public PasskeyResponse Get(GetBridgeRequestData requestData)
@@ -41,11 +45,8 @@ namespace PasskeyCoreSDK.PasskeyBridge
                     Message = CreatePasskeyMessage("GetBridge", "GetBridge"),
                     Data = requestData
                 };
-
-                XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-                ns.Add("ota", "http://www.opentravel.org/OTA/2002/11");
-
-                requestXmlString = XmlSerializationHelper.Serialize(request, ns);
+                
+                requestXmlString = XmlSerializationHelper.Serialize(request, this.xmlSerializerNamespaces);
                 responseXmlString = this.service.get(requestXmlString);
                 passkeyResponse = XmlSerializationHelper.Deserialize<PasskeyResponse>(responseXmlString);
             }
@@ -84,10 +85,7 @@ namespace PasskeyCoreSDK.PasskeyBridge
                     Data = requestData
                 };
 
-                XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-                ns.Add("ota", "http://www.opentravel.org/OTA/2002/11");
-
-                requestXmlString = XmlSerializationHelper.Serialize(request, ns);
+                requestXmlString = XmlSerializationHelper.Serialize(request, this.xmlSerializerNamespaces);
                 responseXmlString = this.service.create(requestXmlString);
                 passkeyResponse = XmlSerializationHelper.Deserialize<PasskeyResponse>(responseXmlString);
             }
@@ -126,7 +124,7 @@ namespace PasskeyCoreSDK.PasskeyBridge
                     Data = requestData
                 };
 
-                requestXmlString = XmlSerializationHelper.Serialize(request);
+                requestXmlString = XmlSerializationHelper.Serialize(request, this.xmlSerializerNamespaces);
                 responseXmlString = this.service.modify(requestXmlString);
                 passkeyResponse = XmlSerializationHelper.Deserialize<PasskeyResponse>(responseXmlString);
             }
@@ -165,10 +163,7 @@ namespace PasskeyCoreSDK.PasskeyBridge
                     Data = requestData
                 };
 
-                XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-                ns.Add("ota", "http://www.opentravel.org/OTA/2002/11");
-
-                requestXmlString = XmlSerializationHelper.Serialize(request, ns);
+                requestXmlString = XmlSerializationHelper.Serialize(request, this.xmlSerializerNamespaces);
                 responseXmlString = this.service.cancel(requestXmlString);
                 passkeyResponse = XmlSerializationHelper.Deserialize<PasskeyResponse>(responseXmlString);
             }
