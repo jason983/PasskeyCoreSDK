@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Guest Count
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
 {
+    using System.Xml.Serialization;
+
     /// <summary>
-    ///     The guest count.
+    /// The guest count.
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
     public class GuestCount
@@ -16,13 +17,13 @@ namespace PasskeyCoreSDK.Domain
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the age qualifying code.
+        /// Gets or sets the age qualifying code.
         /// </summary>
         [XmlAttribute]
         public byte AgeQualifyingCode { get; set; }
 
         /// <summary>
-        ///     Gets or sets the count.
+        /// Gets or sets the count.
         /// </summary>
         [XmlAttribute]
         public byte Count { get; set; }

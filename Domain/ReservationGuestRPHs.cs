@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Reservation Guests ?RPHs?
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
 {
+    using System.Xml.Serialization;
+
     /// <summary>
-    ///     The ot a_ hotel res rq hotel reservations hotel reservation res global info res guest rp hs.
+    ///     The reservation guest RPHs.
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
     public class ReservationGuestRPHs
@@ -16,7 +17,7 @@ namespace PasskeyCoreSDK.Domain
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the res guest rph.
+        ///     Gets or sets the reservation guest RPH.
         /// </summary>
         public object ResGuestRPH { get; set; }
 

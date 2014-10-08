@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Modify Bridge Request
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
 {
+    using System.Xml.Serialization;
 
     /// <summary>
-    ///     The create bridge RQ.
+    ///     The modify bridge request
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema")]
     [XmlRoot(Namespace = "http://www.passkey.com/apiSchema", IsNullable = false, ElementName = "ModifyBridgeRQ")]

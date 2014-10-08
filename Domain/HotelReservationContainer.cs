@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Hotel Reservation Container
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
 {
+    using System.Xml.Serialization;
+
     /// <summary>
-    ///     The hotel res rq.
+    ///     Hotel Reservation Container
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
     [XmlRoot(Namespace = "http://www.opentravel.org/OTA/2002/11", IsNullable = false)]

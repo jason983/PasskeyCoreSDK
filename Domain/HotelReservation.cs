@@ -1,27 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Hotel Reservation
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
 {
+    using System.Xml.Serialization;
+
     /// <summary>
     ///     The hotel reservation.
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
     public class HotelReservation
-    {        
+    {
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the res global info.
+        ///     Gets or sets the Reservation Global Inforomation
         /// </summary>
         public ReservationGlobalInformation ResGlobalInfo { get; set; }
 
         /// <summary>
-        ///     Gets or sets the res guests.
+        ///     Gets or sets the Reservation Guests
         /// </summary>
         [XmlArray("ResGuests")]
         [XmlArrayItem("ResGuest", IsNullable = false)]
@@ -39,7 +40,7 @@ namespace PasskeyCoreSDK.Domain
         public RoomStays RoomStays { get; set; }
 
         /// <summary>
-        ///     Gets or sets the tp a_ extensions.
+        ///     Gets or sets the extensions.
         /// </summary>
         public TPAExtensions TPA_Extensions { get; set; }
 

@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Passkey Security
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
 {
     /// <summary>
-    ///     The create bridge rq security.
+    ///     The passkey security
     /// </summary>
     public class PasskeySecurity
     {
@@ -16,7 +15,7 @@ namespace PasskeyCoreSDK.Domain
 
         /// <summary>
         ///     Gets or sets the login.
-        /// </summary>        
+        /// </summary>
         public PasskeySecurityLogin Login { get; set; }
 
         /// <summary>

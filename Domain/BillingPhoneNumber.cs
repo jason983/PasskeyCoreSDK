@@ -1,9 +1,15 @@
-﻿namespace PasskeyCoreSDK.Domain
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Billing Phone Number
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace PasskeyCoreSDK.Domain
 {
     using System.Xml.Serialization;
 
     /// <summary>
-    ///     The ot a_ hotel res rq hotel reservations hotel reservation tp a_ extensions p k_ info bill phone.
+    ///     The Billing Phone Number
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
     public class BillingPhoneNumber

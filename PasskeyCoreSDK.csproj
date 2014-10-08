@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\BillingPhoneNumber.cs" />
-    <Compile Include="Domain\BridgeId.cs" />
     <Compile Include="Domain\CancelBridgeRequest.cs" />
     <Compile Include="Domain\CancelBridgeRequestData.cs" />
     <Compile Include="Domain\CreateBridgeRequest.cs" />

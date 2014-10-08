@@ -1,23 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Get Bridge Request Data
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
 {
-    /// <remarks/>
-    public partial class GetBridgeRequestData
+    using System.Xml.Serialization;
+
+    /// <summary>
+    /// The get bridge request data.
+    /// </summary>
+    public class GetBridgeRequestData
     {
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(ElementName = "OTA_ReadRQ", Namespace = "http://www.opentravel.org/OTA/2002/11")]
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets the get request.
+        /// </summary>
+        [XmlElement(ElementName = "OTA_ReadRQ", Namespace = "http://www.opentravel.org/OTA/2002/11")]
         public GetRequest GetRequest { get; set; }
+
+        #endregion
     }
 
-    /// <remarks/>
-    public partial class GetRequest
+    /// <summary>
+    /// The get request.
+    /// </summary>
+    public class GetRequest
     {
-        /// <remarks/>
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets the unique id.
+        /// </summary>
         public UniqueId UniqueId { get; set; }
+
+        #endregion
     }
 }

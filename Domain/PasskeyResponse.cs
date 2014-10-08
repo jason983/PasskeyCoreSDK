@@ -1,282 +1,197 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   The passkey response and its related classes
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
-{   
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.passkey.com/apiSchema", IsNullable = false, ElementName="PasskeyRS")]
-    public partial class PasskeyResponse
+{
+    using System.Xml.Serialization;
+
+    /// <summary>
+    /// The passkey response.
+    /// </summary>
+    [XmlType(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema")]
+    [XmlRoot(Namespace = "http://www.passkey.com/apiSchema", IsNullable = false, ElementName = "PasskeyRS")]
+    public class PasskeyResponse
     {
+        #region Public Properties
 
-        private ResponseMessage messageField;
+        /// <summary>
+        /// Gets or sets the data.
+        /// </summary>
+        public ResponseData Data { get; set; }
 
-        private ResponseData dataField;
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        public ResponseMessage Message { get; set; }
 
-        public ResponseMessage Message
-        {
-            get
-            {
-                return this.messageField;
-            }
-            set
-            {
-                this.messageField = value;
-            }
-        }
-
-        public ResponseData Data
-        {
-            get
-            {
-                return this.dataField;
-            }
-            set
-            {
-                this.dataField = value;
-            }
-        }
-
+        /// <summary>
+        /// Gets or sets the request xml.
+        /// </summary>
         public string RequestXML { get; set; }
 
+        /// <summary>
+        /// Gets or sets the response xml.
+        /// </summary>
         public string ResponseXML { get; set; }
+
+        #endregion
     }
 
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema", TypeName = "PasskeyRS")]
-    public partial class ResponseMessage
+    /// <summary>
+    /// The response message.
+    /// </summary>
+    [XmlType(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema", TypeName = "PasskeyRS")]
+    public class ResponseMessage
     {
+        #region Public Properties
 
-        private ResponseMessageStatus statusField;
+        /// <summary>
+        /// Gets or sets the errors.
+        /// </summary>
+        public ResponseMessageErrors Errors { get; set; }
 
-        private ResponseMessageErrors errorsField;
+        /// <summary>
+        /// Gets or sets the guid.
+        /// </summary>
+        [XmlAttribute]
+        public string GUID { get; set; }
 
-        private string gUIDField;
+        /// <summary>
+        /// Gets or sets the status.
+        /// </summary>
+        public ResponseMessageStatus Status { get; set; }
 
-        
-        public ResponseMessageStatus Status
-        {
-            get
-            {
-                return this.statusField;
-            }
-            set
-            {
-                this.statusField = value;
-            }
-        }
-
-        
-        public ResponseMessageErrors Errors
-        {
-            get
-            {
-                return this.errorsField;
-            }
-            set
-            {
-                this.errorsField = value;
-            }
-        }
-
-        
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string GUID
-        {
-            get
-            {
-                return this.gUIDField;
-            }
-            set
-            {
-                this.gUIDField = value;
-            }
-        }
+        #endregion
     }
 
-    
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema")]
-    public partial class ResponseMessageStatus
+    /// <summary>
+    /// The response message status.
+    /// </summary>
+    [XmlType(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema")]
+    public class ResponseMessageStatus
     {
+        #region Public Properties
 
-        private byte idField;
+        /// <summary>
+        /// Gets or sets the id.
+        /// </summary>
+        [XmlAttribute]
+        public byte ID { get; set; }
 
-        private string valueField;
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        [XmlText]
+        public string Value { get; set; }
 
-        
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte ID
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
-
-        
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string Value
-        {
-            get
-            {
-                return this.valueField;
-            }
-            set
-            {
-                this.valueField = value;
-            }
-        }
+        #endregion
     }
 
-    
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema")]
-    public partial class ResponseData
+    /// <summary>
+    /// The response data.
+    /// </summary>
+    [XmlType(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema")]
+    public class ResponseData
     {
+        #region Public Properties
 
-        private ResponseHotelReservationContainer oTA_HotelResRSField;
+        /// <summary>
+        /// Gets or sets the response hotel reservation container.
+        /// </summary>
+        [XmlElement(Namespace = "http://www.opentravel.org/OTA/2002/11", ElementName = "OTA_HotelResRS")]
+        public ResponseHotelReservationContainer ResponseHotelReservationContainer { get; set; }
 
-
-        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.opentravel.org/OTA/2002/11", ElementName = "OTA_HotelResRS")]
-        public ResponseHotelReservationContainer ResponseHotelReservationContainer
-        {
-            get
-            {
-                return this.oTA_HotelResRSField;
-            }
-            set
-            {
-                this.oTA_HotelResRSField = value;
-            }
-        }
+        #endregion
     }
 
-    
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.opentravel.org/OTA/2002/11", IsNullable = false)]
-    public partial class ResponseHotelReservationContainer
+    /// <summary>
+    /// The response hotel reservation container.
+    /// </summary>
+    [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
+    [XmlRoot(Namespace = "http://www.opentravel.org/OTA/2002/11", IsNullable = false)]
+    public class ResponseHotelReservationContainer
     {
+        #region Public Properties
 
-        private ResponseHotelReservations hotelReservationsField;
+        /// <summary>
+        /// Gets or sets the hotel reservations.
+        /// </summary>
+        public ResponseHotelReservations HotelReservations { get; set; }
 
-        
-        public ResponseHotelReservations HotelReservations
-        {
-            get
-            {
-                return this.hotelReservationsField;
-            }
-            set
-            {
-                this.hotelReservationsField = value;
-            }
-        }
+        #endregion
     }
 
-    
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
-    public partial class ResponseHotelReservations
+    /// <summary>
+    /// The response hotel reservations.
+    /// </summary>
+    [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
+    public class ResponseHotelReservations
     {
+        #region Public Properties
 
-        private ResponseHotelReservation hotelReservationField;
+        /// <summary>
+        /// Gets or sets the hotel reservation.
+        /// </summary>
+        public ResponseHotelReservation HotelReservation { get; set; }
 
-        
-        public ResponseHotelReservation HotelReservation
-        {
-            get
-            {
-                return this.hotelReservationField;
-            }
-            set
-            {
-                this.hotelReservationField = value;
-            }
-        }
+        #endregion
     }
 
-    
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
-    public partial class ResponseHotelReservation
+    /// <summary>
+    /// The response hotel reservation.
+    /// </summary>
+    [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
+    public class ResponseHotelReservation
     {
+        #region Public Properties
 
-        private ResponseBridgeId uniqueIdField;
+        /// <summary>
+        /// Gets or sets the unique id.
+        /// </summary>
+        public ResponseBridgeId UniqueId { get; set; }
 
-        
-        public ResponseBridgeId UniqueId
-        {
-            get
-            {
-                return this.uniqueIdField;
-            }
-            set
-            {
-                this.uniqueIdField = value;
-            }
-        }
+        #endregion
     }
 
-    
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
-    public partial class ResponseBridgeId
+    /// <summary>
+    /// The response bridge id.
+    /// </summary>
+    [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
+    public class ResponseBridgeId
     {
+        #region Public Properties
 
-        private string idField;
+        /// <summary>
+        /// Gets or sets the id.
+        /// </summary>
+        [XmlAttribute]
+        public string Id { get; set; }
 
-        private string typeField;
+        /// <summary>
+        /// Gets or sets the type.
+        /// </summary>
+        [XmlAttribute]
+        public string Type { get; set; }
 
-        
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
-
-        
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Type
-        {
-            get
-            {
-                return this.typeField;
-            }
-            set
-            {
-                this.typeField = value;
-            }
-        }
+        #endregion
     }
 
-    
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema")]
-    public partial class ResponseMessageErrors
+    /// <summary>
+    /// The response message errors.
+    /// </summary>
+    [XmlType(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema")]
+    public class ResponseMessageErrors
     {
+        #region Public Properties
 
-        private string errorField;
+        /// <summary>
+        /// Gets or sets the error.
+        /// </summary>
+        public string Error { get; set; }
 
-        
-        public string Error
-        {
-            get
-            {
-                return this.errorField;
-            }
-            set
-            {
-                this.errorField = value;
-            }
-        }
+        #endregion
     }
-
-
 }

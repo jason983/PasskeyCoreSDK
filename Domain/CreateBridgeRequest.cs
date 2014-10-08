@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Create Bridge Request
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
 {
+    using System.Xml.Serialization;
+
     /// <summary>
-    ///     The create bridge RQ.
+    ///     The create bridge request.
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema")]
     [XmlRoot(Namespace = "http://www.passkey.com/apiSchema", IsNullable = false, ElementName = "CreateBridgeRQ")]
@@ -17,17 +18,17 @@ namespace PasskeyCoreSDK.Domain
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the data.
+        /// Gets or sets the data.
         /// </summary>
         public CreateBridgeRequestData Data { get; set; }
 
         /// <summary>
-        ///     Gets or sets the message.
+        /// Gets or sets the message.
         /// </summary>
         public PasskeyMessage Message { get; set; }
 
         /// <summary>
-        ///     Gets or sets the security.
+        /// Gets or sets the security.
         /// </summary>
         public PasskeySecurity Security { get; set; }
 

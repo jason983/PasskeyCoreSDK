@@ -1,61 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Unique Id AKA Bridge Id
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 namespace PasskeyCoreSDK.Domain
 {
-    /// <remarks/>    
-    public partial class UniqueId
+    using System.Xml.Serialization;
+
+    /// <summary>
+    ///     The Unique Id AKA Bridge Id
+    /// </summary>
+    public class UniqueId
     {
+        #region Public Properties
 
-        private string companyNameField;
+        /// <summary>
+        /// Gets or sets the company name.
+        /// </summary>
+        public string CompanyName { get; set; }
 
-        private string typeField;
-
-        private string idField;
-
-        /// <remarks/>
-        public string CompanyName
-        {
-            get
-            {
-                return this.companyNameField;
-            }
-            set
-            {
-                this.companyNameField = value;
-            }
-        }
-
-        /// <remarks/>
+        /// <summary>
+        /// Gets or sets the id.
+        /// </summary>
         [XmlAttribute]
-        public string Type
-        {
-            get
-            {
-                return this.typeField;
-            }
-            set
-            {
-                this.typeField = value;
-            }
-        }
+        public string Id { get; set; }
 
-        /// <remarks/>
+        /// <summary>
+        /// Gets or sets the type.
+        /// </summary>
         [XmlAttribute]
-        public string Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
+        public string Type { get; set; }
+
+        #endregion
     }
 }

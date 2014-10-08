@@ -1,9 +1,15 @@
-﻿namespace PasskeyCoreSDK.Domain
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Info Custom Fields
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace PasskeyCoreSDK.Domain
 {
     using System.Xml.Serialization;
 
     /// <summary>
-    ///     The ot a_ hotel res rq hotel reservations hotel reservation tp a_ extensions p k_ info custom fields.
+    ///     The info custom fields.
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
     public class InfoCustomFields

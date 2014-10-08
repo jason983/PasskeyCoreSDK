@@ -1,9 +1,15 @@
-﻿namespace PasskeyCoreSDK.Domain
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Payment Card Address Country Name
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace PasskeyCoreSDK.Domain
 {
     using System.Xml.Serialization;
 
     /// <summary>
-    ///     The ot a_ hotel res rq hotel reservations hotel reservation res global info guarantee guarantees accepted guarantee accepted payment card address country name.
+    ///     Accepted payment card address country name.
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
     public class PaymentCardAddressCountryName

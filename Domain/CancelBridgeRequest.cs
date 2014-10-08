@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Cancel Bridge Request
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
 {
+    using System.Xml.Serialization;
+
+    /// <summary>
+    /// The cancel bridge request.
+    /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema")]
     [XmlRoot(Namespace = "http://www.passkey.com/apiSchema", IsNullable = false, ElementName = "CancelBridgeRQ")]
     public class CancelBridgeRequest

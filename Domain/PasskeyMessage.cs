@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   The create bridge request message.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
 {
     /// <summary>
-    ///     The create bridge rq message.
+    ///     The create bridge request message.
     /// </summary>
     public class PasskeyMessage
     {
         #region Public Properties
+
+        /// <summary>
+        ///     Gets or sets the GUID.
+        /// </summary>
+        public string GUID { get; set; }
 
         /// <summary>
         ///     Gets or sets the locale.
@@ -38,11 +42,6 @@ namespace PasskeyCoreSDK.Domain
         ///     Gets or sets the version.
         /// </summary>
         public string Version { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the GUID.
-        /// </summary>
-        public string GUID { get; set; }
 
         #endregion
     }

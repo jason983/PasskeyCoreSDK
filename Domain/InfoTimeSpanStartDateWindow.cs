@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="InfoTimeSpanStartDateWindow.cs" company="">
+//   Info Time Span Start Date Window
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain
 {
+    using System;
+    using System.Xml.Serialization;
+
     /// <summary>
-    ///     The ot a_ hotel res rq hotel reservations hotel reservation res global info time span start date window.
+    ///     The info time span start date window.
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
     public class InfoTimeSpanStartDateWindow
@@ -28,5 +30,5 @@ namespace PasskeyCoreSDK.Domain
         public DateTime LatestDate { get; set; }
 
         #endregion
-    }  
+    }
 }

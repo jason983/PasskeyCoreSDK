@@ -1,9 +1,15 @@
-﻿namespace PasskeyCoreSDK.Domain
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   TPA Extension PK Information
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace PasskeyCoreSDK.Domain
 {
     using System.Xml.Serialization;
 
     /// <summary>
-    ///     The ot a_ hotel res rq hotel reservations hotel reservation tp a_ extensions p k_ info.
+    ///     The TPA Extension PK Information
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
     public class TPAExtensionsPKInfo

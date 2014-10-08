@@ -1,26 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
+//   Request Data to Cancel a Bridge Record
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 namespace PasskeyCoreSDK.Domain
 {
-    /// <remarks/>
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema", TypeName = "CancelBridgeRQData")]
-    public partial class CancelBridgeRequestData
+    using System.Xml.Serialization;
+
+    /// <summary>
+    ///     The cancel bridge request data.
+    /// </summary>
+    [XmlType(AnonymousType = true, Namespace = "http://www.passkey.com/apiSchema", TypeName = "CancelBridgeRQData")]
+    public class CancelBridgeRequestData
     {
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.opentravel.org/OTA/2002/11", ElementName = "OTA_CancelRQ")]
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets the cancel request.
+        /// </summary>
+        [XmlElement(Namespace = "http://www.opentravel.org/OTA/2002/11", ElementName = "OTA_CancelRQ")]
         public CancelRequest CancelRequest { get; set; }
+
+        #endregion
     }
 
-    /// <remarks/>
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.opentravel.org/OTA/2002/11", IsNullable = false)]
-    public partial class CancelRequest
+    /// <summary>
+    /// The cancel request.
+    /// </summary>
+    [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
+    [XmlRoot(Namespace = "http://www.opentravel.org/OTA/2002/11", IsNullable = false)]
+    public class CancelRequest
     {
-        /// <remarks/>
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets the unique id.
+        /// </summary>
         public UniqueId UniqueId { get; set; }
+
+        #endregion
     }
 }
