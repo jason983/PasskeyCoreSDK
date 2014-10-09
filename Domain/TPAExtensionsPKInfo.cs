@@ -44,7 +44,7 @@ namespace PasskeyCoreSDK.Domain
         /// <summary>
         ///     Gets or sets the ext reference id.
         /// </summary>
-        public uint ExtReferenceID { get; set; }
+        public string ExtReferenceID { get; set; }
 
         /// <summary>
         ///     Gets or sets the how booked.
