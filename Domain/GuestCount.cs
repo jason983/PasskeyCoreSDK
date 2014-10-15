@@ -26,7 +26,7 @@ namespace PasskeyCoreSDK.Domain
         /// Gets or sets the count.
         /// </summary>
         [XmlAttribute]
-        public byte Count { get; set; }
+        public int Count { get; set; }
 
         #endregion
     }
