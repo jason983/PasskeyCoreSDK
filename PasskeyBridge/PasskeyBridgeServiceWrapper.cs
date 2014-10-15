@@ -118,6 +118,19 @@ namespace PasskeyCoreSDK.PasskeyBridge
         /// </param>
         public PasskeyBridgeServiceWrapper(PasskeyMode mode, uint partnerId, string userName, string password)
         {
+            switch (mode)
+            {
+                case PasskeyMode.Training:
+                    this.webServiceBaseUrl = TrainingWebServiceBaseUrl;
+                    break;
+                case PasskeyMode.QA:
+                    this.webServiceBaseUrl = QAWebServiceBaseUrl;
+                    break;
+                default:
+                    this.webServiceBaseUrl = ProductionWebServiceBaseUrl;
+                    break;
+            }
+
             this.Init(this.webServiceBaseUrl + BridgeServiceEndpoint, partnerId, userName, password, mode);
         }
 
