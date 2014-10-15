@@ -22,10 +22,10 @@ namespace PasskeyCoreSDK.Domain
         public Profiles Profiles { get; set; }
 
         /// <summary>
-        ///     Gets or sets the res guest rph.
+        ///     Gets or sets the res guest RPH.
         /// </summary>
         [XmlAttribute("ResGuestRPH")]
-        public byte ReservationGuestRPH { get; set; }
+        public int ReservationGuestRPH { get; set; }
 
         #endregion
     }
