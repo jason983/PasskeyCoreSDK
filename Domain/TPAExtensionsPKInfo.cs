@@ -57,7 +57,7 @@ namespace PasskeyCoreSDK.Domain
         public string PaymentType { get; set; }
 
         /// <summary>
-        ///     Gets or sets the primary guest rph.
+        ///     Gets or sets the primary guest RPH.
         /// </summary>
         public byte PrimaryGuestRPH { get; set; }
 
@@ -72,7 +72,7 @@ namespace PasskeyCoreSDK.Domain
         public string Referrer { get; set; }
 
         /// <summary>
-        ///     Gets or sets a value indicating whether send ack.
+        ///     Gets or sets a value indicating whether send ACK.
         /// </summary>
         public bool SendAck { get; set; }
 

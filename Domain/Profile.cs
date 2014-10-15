@@ -27,7 +27,7 @@ namespace PasskeyCoreSDK.Domain
         public ProfileCustomer Customer { get; set; }
 
         /// <summary>
-        ///     Gets or sets the pref collections.
+        ///     Gets or sets the preference collections.
         /// </summary>
         public ProfilePreferenceCollections PrefCollections { get; set; }
 

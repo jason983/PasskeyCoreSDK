@@ -38,7 +38,7 @@ namespace PasskeyCoreSDK.Domain
         public object Memberships { get; set; }
 
         /// <summary>
-        ///     Gets or sets the res guest rp hs.
+        ///     Gets or sets the res guest RPHs.
         /// </summary>
         public ReservationGuestRPHs ResGuestRPHs { get; set; }
 

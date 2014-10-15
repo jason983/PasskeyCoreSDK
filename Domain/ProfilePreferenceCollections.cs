@@ -17,7 +17,7 @@ namespace PasskeyCoreSDK.Domain
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the pref collection.
+        ///     Gets or sets the preference collection.
         /// </summary>
         public ProfilePreferenceCollection PrefCollection { get; set; }
 

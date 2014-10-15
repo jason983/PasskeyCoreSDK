@@ -17,7 +17,7 @@ namespace PasskeyCoreSDK.Domain
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the hotel pref.
+        ///     Gets or sets the hotel preference.
         /// </summary>
         public ProfileHotelPreference HotelPref { get; set; }
 

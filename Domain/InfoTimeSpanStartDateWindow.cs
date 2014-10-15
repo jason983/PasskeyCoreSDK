@@ -1,7 +1,7 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="InfoTimeSpanStartDateWindow.cs" company="">
+// <summary>
 //   Info Time Span Start Date Window
-// </copyright>
+// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace PasskeyCoreSDK.Domain

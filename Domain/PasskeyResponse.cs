@@ -54,7 +54,7 @@ namespace PasskeyCoreSDK.Domain
         public ResponseMessageErrors Errors { get; set; }
 
         /// <summary>
-        /// Gets or sets the guid.
+        /// Gets or sets the GUID.
         /// </summary>
         [XmlAttribute]
         public string GUID { get; set; }

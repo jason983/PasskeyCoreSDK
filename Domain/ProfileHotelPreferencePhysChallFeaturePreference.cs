@@ -9,7 +9,7 @@ namespace PasskeyCoreSDK.Domain
     using System.Xml.Serialization;
 
     /// <summary>
-    ///     The Profile Hotel Preference Phys Chall Feature Preference
+    ///     The Profile Hotel Preference Physically Challenged Feature Preference
     /// </summary>
     [XmlType(AnonymousType = true, Namespace = "http://www.opentravel.org/OTA/2002/11")]
     public class ProfileHotelPreferencePhysChallFeaturePreference
@@ -17,7 +17,7 @@ namespace PasskeyCoreSDK.Domain
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the phys chall feature.
+        ///     Gets or sets the Physically Challenged Feature.
         /// </summary>
         [XmlAttribute]
         public byte PhysChallFeature { get; set; }

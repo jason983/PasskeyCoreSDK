@@ -17,7 +17,7 @@ namespace PasskeyCoreSDK.Domain
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the Reservation Global Inforomation
+        ///     Gets or sets the Reservation Global Information
         /// </summary>
         public ReservationGlobalInformation ResGlobalInfo { get; set; }
 

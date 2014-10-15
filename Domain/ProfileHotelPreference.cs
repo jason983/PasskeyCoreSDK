@@ -17,7 +17,7 @@ namespace PasskeyCoreSDK.Domain
         #region Public Properties
 
         /// <summary>
-        ///     Gets or sets the phys chall feature pref.
+        ///     Gets or sets the physically challenged feature preference.
         /// </summary>
         public ProfileHotelPreferencePhysChallFeaturePreference PhysChallFeaturePref { get; set; }
 
@@ -28,7 +28,7 @@ namespace PasskeyCoreSDK.Domain
         public byte SmokingAllowed { get; set; }
 
         /// <summary>
-        ///     Gets or sets the spec request pref.
+        ///     Gets or sets the special request preference.
         /// </summary>
         public string SpecRequestPref { get; set; }
 

@@ -38,7 +38,7 @@ namespace PasskeyCoreSDK.Domain
         public ushort PostalCode { get; set; }
 
         /// <summary>
-        ///     Gets or sets the state prov.
+        ///     Gets or sets the state (province).
         /// </summary>
         public string StateProv { get; set; }
 
