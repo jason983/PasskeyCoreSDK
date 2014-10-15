@@ -93,6 +93,7 @@
     <Compile Include="Domain\TPAExtensions.cs" />
     <Compile Include="Domain\TPAExtensionsPKInfo.cs" />
     <Compile Include="Domain\UniqueId.cs" />
+    <Compile Include="Enums\PasskeyMode.cs" />
     <Compile Include="Helpers\Utf8StringWriter.cs" />
     <Compile Include="Helpers\XmlSerializationHelper.cs" />
     <Compile Include="PasskeyBridge\PasskeyBridgeServiceWrapper.cs" />

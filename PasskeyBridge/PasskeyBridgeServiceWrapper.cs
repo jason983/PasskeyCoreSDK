@@ -1,4 +1,5 @@
-﻿// <summary>
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <summary>
 //   The passkey bridge service wrapper.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
@@ -8,6 +9,7 @@ namespace PasskeyCoreSDK.PasskeyBridge
     using System.Xml.Serialization;
 
     using PasskeyCoreSDK.Domain;
+    using PasskeyCoreSDK.Enums;
     using PasskeyCoreSDK.Helpers;
     using PasskeyCoreSDK.PasskeyBridgeWebReference;
 
@@ -19,34 +21,82 @@ namespace PasskeyCoreSDK.PasskeyBridge
         #region Constants
 
         /// <summary>
-        /// The passkey web service mode.
+        ///     The passkey web service mode.
         /// </summary>
         private const string PasskeyWebServiceMode = "S";
 
         /// <summary>
-        /// The passkey web service version.
+        ///     The passkey web service version.
         /// </summary>
         private const string PasskeyWebServiceVersion = "4.00.02";
+
+        /// <summary>
+        ///     The bridge service endpoint.
+        /// </summary>
+        private const string BridgeServiceEndpoint = "/axis/services/PasskeyBridge";
+
+        /// <summary>
+        ///     The production base url.
+        /// </summary>
+        private const string ProductionWebServiceBaseUrl = "https://api.passkey.com";
+
+        /// <summary>
+        ///     The training base url.
+        /// </summary>
+        private const string TrainingWebServiceBaseUrl = "https://training-api.passkey.com";
+
+        /// <summary>
+        /// The QA base url.
+        /// </summary>
+        private const string QAWebServiceBaseUrl = "https://qa-api.passkey.com";
+
+        /// <summary>
+        /// The production get res web redirect endpoint.
+        /// </summary>
+        private const string ProductionGetResWebRedirectEndpoint = "/RegLink/API";
+
+        /// <summary>
+        /// The training get res web redirect endpoint.
+        /// </summary>
+        private const string TrainingGetResWebRedirectEndpoint = "/RegLink/API";
+
+        /// <summary>
+        /// The QA get res web redirect endpoint.
+        /// </summary>
+        /// <remarks>
+        /// The text "httpapi" must be lowercase.
+        /// </remarks>
+        private const string QAGetResWebRedirectEndpoint = "/httpapi/RegLink";
 
         #endregion
 
         #region Fields
 
         /// <summary>
+        /// The web service base url.
+        /// </summary>
+        private string webServiceBaseUrl;
+
+        /// <summary>
+        /// The get for redirect res web url.
+        /// </summary>
+        private string getForRedirectResWebEndpoint;
+
+        /// <summary>
         ///     The passkey security object.
         /// </summary>
-        private readonly PasskeySecurity passkeySecurity;
+        private PasskeySecurity passkeySecurity;
 
         /// <summary>
         ///     The Bridge service.
         /// </summary>
-        private readonly BridgeServiceService service;
+        private BridgeServiceService service;
 
         /// <summary>
         ///     The xml serializer namespaces.
         /// </summary>
-        private readonly XmlSerializerNamespaces xmlSerializerNamespaces;
-
+        private XmlSerializerNamespaces xmlSerializerNamespaces;
+        
         #endregion
 
         #region Constructors and Destructors
@@ -54,13 +104,31 @@ namespace PasskeyCoreSDK.PasskeyBridge
         /// <summary>
         /// Initializes a new instance of the <see cref="PasskeyBridgeServiceWrapper"/> class.
         /// </summary>
-        /// <param name="webserviceUrl">
-        /// The web service url.
-        /// Training/Certification URL: https://training-api.passkey.com/axis/services/PasskeyBridge
-        /// Production URL: https://api.passkey.com/axis/services/PasskeyBridge
+        /// <param name="mode">
+        /// The mode.
         /// </param>
         /// <param name="partnerId">
-        /// Your Passkey partner id.
+        /// The partner id.
+        /// </param>
+        /// <param name="userName">
+        /// The user name.
+        /// </param>
+        /// <param name="password">
+        /// The password.
+        /// </param>
+        public PasskeyBridgeServiceWrapper(PasskeyMode mode, uint partnerId, string userName, string password)
+        {
+            this.Init(this.webServiceBaseUrl + BridgeServiceEndpoint, partnerId, userName, password, mode);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PasskeyBridgeServiceWrapper"/> class.
+        /// </summary>
+        /// <param name="webserviceUrl">
+        /// The URL to the Passkey Bridge Web Service
+        /// </param>
+        /// <param name="partnerId">
+        /// Your Passkey partner ID.
         /// </param>
         /// <param name="userName">
         /// Your Passkey user name.
@@ -68,37 +136,48 @@ namespace PasskeyCoreSDK.PasskeyBridge
         /// <param name="password">
         /// Your Passkey password.
         /// </param>
-        public PasskeyBridgeServiceWrapper(string webserviceUrl, uint partnerId, string userName, string password)
+        /// <param name="mode">
+        /// The mode.
+        /// </param>
+        public PasskeyBridgeServiceWrapper(string webserviceUrl, uint partnerId, string userName, string password, PasskeyMode mode = PasskeyMode.Production)
         {
-            if (string.IsNullOrEmpty(webserviceUrl))
-            {
-                throw new ArgumentNullException("webserviceUrl");
-            }
-
-            if (partnerId == 0)
-            {
-                throw new ArgumentNullException("partnerId");
-            }
-
-            if (string.IsNullOrEmpty(userName))
-            {
-                throw new ArgumentNullException("userName");
-            }
-
-            if (string.IsNullOrEmpty(password))
-            {
-                throw new ArgumentNullException("password");
-            }
-
-            this.service = new BridgeServiceService { Url = webserviceUrl };
-            this.passkeySecurity = CreatePasskeySecurity(partnerId, userName, password);
-            this.xmlSerializerNamespaces = new XmlSerializerNamespaces();
-            this.xmlSerializerNamespaces.Add("ota", "http://www.opentravel.org/OTA/2002/11");
+            this.Init(webserviceUrl, partnerId, userName, password, mode);
         }
 
         #endregion
 
         #region Public Methods and Operators
+
+        /// <summary>
+        /// Builds an attendee-specific URL that is used to invoke the GroupMAX Attendee Website
+        /// </summary>
+        /// <param name="bridgeId">
+        /// The bridge id.
+        /// </param>
+        /// <param name="lastName">
+        /// The last name.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public string BuildGetForRedirectResWebUrl(string bridgeId, string lastName)
+        {
+            PasskeyMessage message = CreatePasskeyMessage("GetForRedirectResWeb", "GetForRedirectResWeb");
+
+            return
+                string.Format(
+                    "{0}{1}?PartnerID={2}&username={3}&Password={4}&OP={5}&Version={6}&Mode={7}&Destination=02&LastName={8}&BridgeID={9}", 
+                    this.webServiceBaseUrl,
+                    this.getForRedirectResWebEndpoint,
+                    this.passkeySecurity.PartnerID, 
+                    this.passkeySecurity.Login.UserName, 
+                    this.passkeySecurity.Login.Password, 
+                    message.OP, 
+                    message.Version, 
+                    message.Mode, 
+                    lastName, 
+                    bridgeId);
+        }
 
         /// <summary>
         /// Cancel Passkey bridge record
@@ -235,14 +314,25 @@ namespace PasskeyCoreSDK.PasskeyBridge
         /// <summary>
         /// Modify Passkey Bridge record
         /// </summary>
+        /// <param name="bridgeId">
+        /// The bridge Id.
+        /// </param>
+        /// <param name="companyName">
+        /// The company Name.
+        /// </param>
         /// <param name="requestData">
         /// The request data.
         /// </param>
         /// <returns>
         /// The <see cref="PasskeyResponse"/>.
         /// </returns>
-        public PasskeyResponse Modify(ModifyBridgeRequestData requestData)
+        public PasskeyResponse Modify(string bridgeId, string companyName, ModifyBridgeRequestData requestData)
         {
+            if (string.IsNullOrEmpty(bridgeId))
+            {
+                throw new ArgumentNullException("bridgeId");
+            }
+
             if (requestData == null)
             {
                 throw new ArgumentNullException("requestData");
@@ -254,6 +344,13 @@ namespace PasskeyCoreSDK.PasskeyBridge
 
             try
             {
+                requestData.HotelReservationContainer.HotelReservations.HotelReservation.UniqueId = new UniqueId
+                                                                                                        {
+                                                                                                            Type = "BRD",
+                                                                                                            Id = bridgeId,
+                                                                                                            CompanyName = companyName
+                                                                                                        };
+
                 var request = new ModifyBridgeRequest
                                   {
                                       Security = this.passkeySecurity, 
@@ -331,7 +428,10 @@ namespace PasskeyCoreSDK.PasskeyBridge
                                                       Errors =
                                                           new ResponseMessageErrors
                                                               {
-                                                                  Error = ex.Message
+                                                                  Error
+                                                                      =
+                                                                      ex
+                                                                      .Message
                                                               }
                                                   }
                                       };
@@ -361,6 +461,71 @@ namespace PasskeyCoreSDK.PasskeyBridge
                            PartnerID = partnerId, 
                            Token = " "
                        };
+        }
+
+        /// <summary>
+        /// Initialization Section
+        /// </summary>
+        /// <param name="webserviceUrl">
+        /// The web service url.
+        /// </param>
+        /// <param name="partnerId">
+        /// The partner id.
+        /// </param>
+        /// <param name="userName">
+        /// The user name.
+        /// </param>
+        /// <param name="password">
+        /// The password.
+        /// </param>
+        /// <param name="mode">
+        /// The mode.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// WebServiceURL, PartnerId, UserName, Password are required.
+        /// </exception>
+        private void Init(string webserviceUrl, uint partnerId, string userName, string password, PasskeyMode mode)
+        {
+            if (string.IsNullOrEmpty(webserviceUrl))
+            {
+                throw new ArgumentNullException("webserviceUrl");
+            }
+
+            if (partnerId == 0)
+            {
+                throw new ArgumentNullException("partnerId");
+            }
+
+            if (string.IsNullOrEmpty(userName))
+            {
+                throw new ArgumentNullException("userName");
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentNullException("password");
+            }
+
+            switch (mode)
+            {
+                case PasskeyMode.Training:
+                    this.webServiceBaseUrl = TrainingWebServiceBaseUrl;
+                    this.getForRedirectResWebEndpoint = TrainingGetResWebRedirectEndpoint;
+                    break;
+                case PasskeyMode.QA:
+                    this.webServiceBaseUrl = QAWebServiceBaseUrl;
+                    this.getForRedirectResWebEndpoint = QAGetResWebRedirectEndpoint;
+                    break;
+                default:
+                    this.webServiceBaseUrl = ProductionWebServiceBaseUrl;
+                    this.getForRedirectResWebEndpoint = ProductionGetResWebRedirectEndpoint;
+                    break;
+            }
+
+            this.service = new BridgeServiceService { Url = webserviceUrl };
+            this.passkeySecurity = CreatePasskeySecurity(partnerId, userName, password);
+            this.xmlSerializerNamespaces = new XmlSerializerNamespaces();
+            this.xmlSerializerNamespaces.Add("ota", "http://www.opentravel.org/OTA/2002/11");
         }
 
         #endregion
